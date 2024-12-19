@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # posit-lmod
-=======
-# connect-lmod
->>>>>>> fa9341e (first commit)
 
 This repository provides a test environment showcasing how to best/better integrate environment modules into Posit Connect. It also deploys Posit Workbench but uses the default mechanism to deal with [environment modules](https://docs.posit.co/ide/server-pro/r/using_multiple_versions_of_r.html#modules) there. 
 
