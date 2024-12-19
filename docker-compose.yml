@@ -1,0 +1,36 @@
+version: "2.2"
+
+services:
+  posit-lmod:
+    image: mmayer123/posit-lmod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PWB_VERSION: ${PWB_VERSION:-2024.12.0-467.pro1}
+        PCT_VERSION: ${PCT_VERSION:-2024.11.0}
+    container_name: posit
+    hostname: posit
+    privileged: true
+    volumes:
+      - home:/home
+      - ${PWD}/config/rstudio-connect.gcfg:/etc/rstudio-connect/rstudio-connect.gcfg
+      - ${PWD}/scripts/connect.sh:/apps/wrappers/bin/connect.sh
+      - ${PWD}/scripts/workbench.sh:/apps/wrappers/bin/workbench.sh
+      - ${PWD}/scripts/user.sh:/apps/wrappers/bin/user.sh
+      - ${PWD}/scripts/start.sh:/apps/wrappers/bin/start.sh
+      - ${PWD}/scripts/R-4.3.3.sh:/apps/wrappers/bin/R-4.3.3.sh
+      - ${PWD}/scripts/R-4.4.1.sh:/apps/wrappers/bin/R-4.4.1.sh
+      - ${PWD}/logs:/var/log/rstudio
+    expose:
+      - "8787"
+      - "3939"
+    ports:
+      - "8787:8787"
+      - "3939:3939"
+    environment:
+      PCT_LICENSE: ${PCT_LICENSE}
+      PWB_LICENSE: ${PWB_LICENSE}
+      RSTUDIO_PW: ${RSTUDIO_PW}
+volumes:
+  home: 

@@ -1,0 +1,23 @@
+; Posit Connect configuration file
+
+[Server]
+
+
+
+[HTTP]
+; Posit Connect will listen on this network address for HTTP connections.
+Listen = ":3939"
+
+
+[Authentication]
+; Specifies the type of user authentication.
+Provider = "pam"
+
+[R]
+ExecutableScanning = false
+EnvironmentManagement = false
+Executable = /apps/wrappers/bin/R-4.3.3.sh
+Executable = /apps/wrappers/bin/R-4.4.1.sh
+
+[RPackageRepository "CRAN"]
+URL = "https://p3m.dev/cran/__linux__/noble/latest"
